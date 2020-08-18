@@ -41,6 +41,7 @@ class RunConfig(object):
         self.mb_pipeline = mbconfig.get('pipeline')
         self.mb_requests = mbconfig.get('requests')
         self.mb_test_time = mbconfig.get('test_time')
+        self.command = mbconfig.get('command')
         self.explicit_connect_args = bool(
             mbconfig.get('explicit_connect_args'))
 

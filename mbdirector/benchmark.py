@@ -46,7 +46,8 @@ class Benchmark(object):
             self.args += ['--requests', str(self.config.mb_requests)]
         if self.config.mb_test_time is not None:
             self.args += ['--test-time', str(self.config.mb_test_time)]
-
+        if self.config.command is not None:
+            self.args += ['--command', str(self.config.command)]
         self.args += kwargs['args']
 
     @classmethod
@@ -65,5 +66,5 @@ class Benchmark(object):
         _stdout, _stderr = process.communicate()
         if _stderr:
             logging.debug('  >>> stderr <<<\n%s\n', _stderr)
-            self.write_file('mb.stderr', _stderr)
+            self.write_file('mb.stderr', _stderr.decode())
         return process.wait() == 0
